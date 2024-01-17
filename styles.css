@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Condensed&display=swap');
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Mono', monospace;
+}
+
+:root{
+    --text: #080604;
+    --error: #f87171;
+    --svg-filter-1: invert(62%) sepia(75%) saturate(285%) hue-rotate(337deg) brightness(85%) contrast(95%);
+    --svg-filter-2: invert(81%) sepia(4%) saturate(3994%) hue-rotate(327deg) brightness(104%) contrast(75%);
+    --background: #F9F5F3;
+    --tile-color: #F1EDEB;
+    --primary: #b87148;
+    --secondary: #dfb59c;
+    --accent: #d58d63;
+    --btn-green:#3bd172;
+    --btn-red:#eb6161;
+    --btn-remove:#d3d3d3;
+
+
+    --text-filter: invert(99%) sepia(0%) saturate(5792%) hue-rotate(317deg) brightness(129%) contrast(82%);
+}
+
+body{
+    background-color: var(--primary);
+    min-height: 100vh;
+}
