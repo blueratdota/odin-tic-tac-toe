@@ -2,7 +2,11 @@ const gameBoard = (function(){ // IIFE'S --- pwede ma modify
     const winOrder = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]]
     const availableSpace = [1,2,3,4,5,6,7,8,9]
     let stepCounter = 0 
-    return{winOrder,availableSpace,stepCounter}
+    return{
+        winOrder,
+        availableSpace,
+        stepCounter
+    }
 })();
 
 const checkWinner = function(player){ //CLOSURES
@@ -38,6 +42,8 @@ function player(boardPiece){ //FACTORY FUNCTION --- pwede ma modify
 
 const playerX = player('X')
 const playerO = player('O')
+
+
 
 
 
