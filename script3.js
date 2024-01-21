@@ -11,6 +11,9 @@
         })
         restartBtn.addEventListener('click',function(){
             console.log('clicked');
+            playAgain()
+            gameLoop()
+            restartBtn.classList.toggle('hidden')
         })
 
         return{
@@ -33,11 +36,19 @@
 
     function player(piece){
         const takenSpace = []
-        const score = 0
+        let score = 0
         return{
             piece,
             takenSpace,
             score
+        }
+    }
+
+    function playAgain(){
+        winConditions.stepCounter = 0
+        const space = document.querySelectorAll('.space')
+        for(let i=0; i<space.length; i++){
+            space[i].textContent=''
         }
     }
 
@@ -81,12 +92,18 @@
     function gameLoop(){
         const theBoard = gameBoard()
 
+
+        const playerXScore = document.querySelector('#player-x-score')
+        const player0Score = document.querySelector('#player-y-score')
+
         const status = document.querySelector('#status')
         const space = document.querySelectorAll('.space')
         const winnerTxt = document.querySelector('#winner')
         let winner = ''
         status.textContent = `Player ${theBoard.currentPlayer().piece}'s Turn`
 
+        winnerTxt.classList.add('hidden')
+        status.classList.remove('hidden')
 
         for(let i=0; i<space.length; i++){
             space[i].addEventListener('click',function(){
@@ -102,6 +119,7 @@
                     if(theBoard.hasWinner()){
                         // console.log(`${theBoard.currentPlayer().piece} IS THE WINNER`);
                         winner = theBoard.currentPlayer().piece
+                        theBoard.currentPlayer().score++
                         winnerTxt.textContent = `Player ${winner} IS THE WINNER`
                         winnerTxt.classList.toggle('hidden')
                         status.classList.toggle('hidden')
@@ -113,11 +131,16 @@
                     }
                     winConditions.stepCounter++
                     status.textContent = `Player ${theBoard.currentPlayer().piece}'s Turn`
+
+                    
                 }
 
                 
             })   
         }
+
+
+
 
     }
   
