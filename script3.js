@@ -35,6 +35,7 @@
     })()
 
     function player(piece){
+        console.log('PLAYER');
         const takenSpace = []
         let score = 0
         return{
@@ -62,7 +63,7 @@
             currentPlayer,
             appendToPlayer:function(cell){
        
-                console.log(`${this.currentPlayer().piece} TURN`);
+                // console.log(`${this.currentPlayer().piece} TURN`);
                 this.currentPlayer().takenSpace.push(cell+1)
                 
             },
@@ -85,14 +86,16 @@
                     })
                 }
                 return checkWinner(this.currentPlayer())
+            },
+            hasDraw: function(){
+                return winConditions.stepCounter==8
             }
         }
     }
 
     function gameLoop(){
+        console.log('GAMELOOP');
         const theBoard = gameBoard()
-
-
         const playerXScore = document.querySelector('#player-x-score')
         const player0Score = document.querySelector('#player-y-score')
 
@@ -112,8 +115,8 @@
                     // console.log(`step counter:${winConditions.stepCounter}`)
                     theBoard.appendToPlayer(i)
                     space[i].textContent = theBoard.currentPlayer().piece
-                    // console.log(`X===:${theBoard.playerX.takenSpace}`)
-                    // console.log(`O===:${theBoard.playerO.takenSpace}`)
+                    console.log(`X===:${theBoard.playerX.takenSpace}`)
+                    console.log(`O===:${theBoard.playerO.takenSpace}`)
                     // console.log(`END OF ROUND:${winConditions.stepCounter}`)
     
                     if(theBoard.hasWinner()){
@@ -126,9 +129,14 @@
                         buttons.restartBtn.classList.toggle('hidden')
                     }
 
-                    else if(winConditions.stepCounter==8){
-                        console.log("it's a draw");
+                    else if(theBoard.hasDraw()){
+                        winner = 'AMBOT NGANO' // KANI ANG GA TRIGGER SA RESTART
+                        winnerTxt.textContent = `It's a DRAW!`
+                        winnerTxt.classList.toggle('hidden')
+                        status.classList.toggle('hidden')
+                        buttons.restartBtn.classList.toggle('hidden')
                     }
+
                     winConditions.stepCounter++
                     status.textContent = `Player ${theBoard.currentPlayer().piece}'s Turn`
 

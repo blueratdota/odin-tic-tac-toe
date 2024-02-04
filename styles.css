@@ -10,7 +10,7 @@
 
 :root{
     --text: #02020b;
-    --background: #f3f3ff;
+    --background: #e9e9ff;
     --background-2: rgb(80, 80, 80);
     --primary: #3c3add;
     --secondary: #d082e9;
@@ -18,20 +18,34 @@
 }
 
 body{
-    background-color: var(--background-2);
+    background-color: var(--background);
     min-height: 100vh;
 }
 
 header{
     text-align: center;
+    background-color: var(--secondary);
+    padding: 24px;
 }
 main{
+    margin-top: 24px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 24px;
 }
 
+#start,#restart{
+    width: 200px;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1.5rem;
+}
+
+#status{
+    font-size: 1.1rem;
+}
 
 .board{
     flex: 1;
@@ -42,10 +56,7 @@ main{
     display: grid;
     grid-gap: 4px;
     grid-template-columns: repeat(3,1fr);
-    border: 1px red solid;  
-    
 }
-
 
 .space{
     display: flex;
@@ -53,7 +64,9 @@ main{
     align-content: center;
     align-items: center;
     aspect-ratio: 2/2;
-    border: 1px rgb(25, 0, 255) solid;
+    border: 1px var(--primary) solid;
+
+    font-size: 4rem;
 }
 
 .hidden{
